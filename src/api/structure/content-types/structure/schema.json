@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "structures",
+  "info": {
+    "singularName": "structure",
+    "pluralName": "structures",
+    "displayName": "Structure",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "structure_id": {
+      "type": "uid"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "intensity_class": {
+      "type": "enumeration",
+      "enum": [
+        "Warm-up",
+        "Active",
+        "Repetition",
+        "Rest",
+        "Cooldown"
+      ]
+    },
+    "length": {
+      "type": "biginteger"
+    },
+    "Intensity_Target": {
+      "type": "biginteger"
+    },
+    "Min_Value": {
+      "type": "biginteger"
+    },
+    "Max_Value": {
+      "type": "biginteger"
+    },
+    "workout_plans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::workout-plan.workout-plan",
+      "mappedBy": "structure"
+    }
+  }
+}

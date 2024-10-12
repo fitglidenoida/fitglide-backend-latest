@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diet_components",
+  "info": {
+    "singularName": "diet-component",
+    "pluralName": "diet-components",
+    "displayName": "Diet_component",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "component_id": {
+      "type": "uid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "energy": {
+      "type": "biginteger"
+    },
+    "fat": {
+      "type": "decimal"
+    },
+    "satuFat": {
+      "type": "decimal"
+    },
+    "carbohydrate": {
+      "type": "decimal"
+    },
+    "sugar": {
+      "type": "decimal"
+    },
+    "fiber": {
+      "type": "decimal"
+    },
+    "protein": {
+      "type": "decimal"
+    },
+    "salt": {
+      "type": "decimal"
+    }
+}
+}

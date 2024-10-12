@@ -1,0 +1,115 @@
+{
+  "kind": "collectionType",
+  "collectionName": "health_vitals",
+  "info": {
+    "singularName": "health-vital",
+    "pluralName": "health-vitals",
+    "displayName": "HealthVital",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vitalid": {
+      "type": "uid"
+    },
+    "DateTime": {
+      "type": "datetime"
+    },
+    "UploadClient": {
+      "type": "string"
+    },
+    "WeightInKilograms": {
+      "type": "integer"
+    },
+    "BloodGlucose": {
+      "type": "decimal"
+    },
+    "BMR": {
+      "type": "biginteger"
+    },
+    "BMI": {
+      "type": "biginteger"
+    },
+    "Systolic": {
+      "type": "biginteger"
+    },
+    "Diastolic": {
+      "type": "biginteger"
+    },
+    "HRV": {
+      "type": "biginteger"
+    },
+    "Injury": {
+      "type": "enumeration",
+      "enum": [
+        "ExtremelyInjured",
+        "VeryInjured",
+        "Injured",
+        "SlightlyInjured ",
+        "Healthy"
+      ]
+    },
+    "InsulinUnits": {
+      "type": "integer"
+    },
+    "InsulinType": {
+      "type": "string"
+    },
+    "MuscleMass": {
+      "type": "biginteger"
+    },
+    "Notes": {
+      "type": "text"
+    },
+    "PercentFat": {
+      "type": "decimal"
+    },
+    "Pulse": {
+      "type": "biginteger"
+    },
+    "SleepHours": {
+      "type": "integer"
+    },
+    "SPO2": {
+      "type": "biginteger"
+    },
+    "Steps": {
+      "type": "biginteger"
+    },
+    "UrineColor": {
+      "type": "enumeration",
+      "enum": [
+        "Clear",
+        "LightYellow",
+        "MediumYellow ",
+        "Yellow",
+        "LightOrange",
+        "MediumOrange ",
+        "Orange"
+      ]
+    },
+    "WaterConsumption": {
+      "type": "integer"
+    },
+    "your_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "username": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "health_vitals"
+    }
+  }
+}

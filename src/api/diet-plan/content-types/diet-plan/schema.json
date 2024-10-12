@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diet_plans",
+  "info": {
+    "singularName": "diet-plan",
+    "pluralName": "diet-plans",
+    "displayName": "Diet_plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Planid": {
+      "type": "uid"
+    },
+    "Date": {
+      "type": "datetime"
+    },
+    "Notes": {
+      "type": "text"
+    },
+    "water_intake": {
+      "type": "biginteger"
+    },
+    "diet_name": {
+      "type": "string"
+    },
+    "username": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "diet_plans"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "kind": "collectionType",
+  "collectionName": "workout_plans",
+  "info": {
+    "singularName": "workout-plan",
+    "pluralName": "workout-plans",
+    "displayName": "workout-plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "workout_id": {
+      "type": "uid"
+    },
+    "Completed": {
+      "type": "boolean"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "Distance": {
+      "type": "decimal"
+    },
+    "DistancePlanned": {
+      "type": "biginteger"
+    },
+    "StartTime": {
+      "type": "datetime"
+    },
+    "StartTimePlanned": {
+      "type": "datetime"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "WorkoutDay": {
+      "type": "datetime"
+    },
+    "TotalTime": {
+      "type": "decimal"
+    },
+    "TotalTimePlanned": {
+      "type": "decimal"
+    },
+    "WorkoutFileFormats": {
+      "type": "string"
+    },
+    "WorkoutType": {
+      "type": "string"
+    },
+    "Url": {
+      "type": "string"
+    },
+    "CadenceAverage": {
+      "type": "biginteger"
+    },
+    "CadenceMaximum": {
+      "type": "biginteger"
+    },
+    "Calories": {
+      "type": "decimal"
+    },
+    "CaloriesPlanned": {
+      "type": "decimal"
+    },
+    "Energy": {
+      "type": "decimal"
+    },
+    "EnergyPlanned": {
+      "type": "decimal"
+    },
+    "Feeling": {
+      "type": "enumeration",
+      "enum": [
+        "Strong",
+        "Normal",
+        "Weak"
+      ]
+    },
+    "HeartRateAverage": {
+      "type": "biginteger"
+    },
+    "HeartRateMaximum": {
+      "type": "biginteger"
+    },
+    "HeartRateMinimum": {
+      "type": "biginteger"
+    },
+    "NormalizedPower": {
+      "type": "biginteger"
+    },
+    "NormalizedSpeed": {
+      "type": "decimal"
+    },
+    "VelocityAverage": {
+      "type": "decimal"
+    },
+    "VelocityMaximum": {
+      "type": "decimal"
+    },
+    "VelocityPlanned": {
+      "type": "decimal"
+    },
+    "PowerAverage": {
+      "type": "decimal"
+    },
+    "PowerMaximum": {
+      "type": "biginteger"
+    },
+    "username": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "workout_plans"
+    },
+    "structure": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::structure.structure",
+      "inversedBy": "workout_plans"
+    }
+  }
+}

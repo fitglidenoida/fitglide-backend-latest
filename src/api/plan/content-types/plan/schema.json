@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "plans",
+  "info": {
+    "singularName": "plan",
+    "pluralName": "plans",
+    "displayName": "subPlan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subplan_id": {
+      "type": "uid"
+    },
+    "description": {
+      "type": "text"
+    },
+    "features": {
+      "type": "json"
+    },
+    "amount": {
+      "type": "biginteger"
+    },
+    
+    "duration": {
+      "type": "biginteger"
+    }
+  }
+}
