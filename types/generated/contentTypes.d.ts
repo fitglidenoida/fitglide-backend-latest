@@ -506,6 +506,12 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::subscription.subscription'
     >;
+    athlete_id: Schema.Attribute.BigInteger;
+    strava_inputs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::strava-input.strava-input'
+    >;
+    image: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -696,6 +702,80 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'>;
+  };
+}
+
+export interface ApiStravaInputStravaInput extends Struct.CollectionTypeSchema {
+  collectionName: 'strava_inputs';
+  info: {
+    singularName: 'strava-input';
+    pluralName: 'strava-inputs';
+    displayName: 'strava-input';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    strava_username: Schema.Attribute.String;
+    resource_state: Schema.Attribute.Integer;
+    firstname: Schema.Attribute.String;
+    lastname: Schema.Attribute.String;
+    profile: Schema.Attribute.String;
+    profile_medium: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    distance: Schema.Attribute.Decimal;
+    moving_time: Schema.Attribute.BigInteger;
+    elapsed_time: Schema.Attribute.BigInteger;
+    total_elevation_gain: Schema.Attribute.BigInteger;
+    elev_high: Schema.Attribute.BigInteger;
+    sport_type: Schema.Attribute.String;
+    start_date: Schema.Attribute.DateTime;
+    start_date_local: Schema.Attribute.DateTime;
+    timezone: Schema.Attribute.String;
+    start_latlng: Schema.Attribute.Decimal;
+    end_latlng: Schema.Attribute.Decimal;
+    achievement_count: Schema.Attribute.Integer;
+    kudos_count: Schema.Attribute.Integer;
+    workout_type: Schema.Attribute.BigInteger;
+    upload_id_str: Schema.Attribute.String;
+    average_speed: Schema.Attribute.Decimal;
+    max_speed: Schema.Attribute.Decimal;
+    gear_id: Schema.Attribute.BigInteger;
+    description: Schema.Attribute.String;
+    photos: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    gear: Schema.Attribute.String;
+    calories: Schema.Attribute.Decimal;
+    kilojoules: Schema.Attribute.Decimal;
+    average_watts: Schema.Attribute.Decimal;
+    max_watts: Schema.Attribute.Decimal;
+    weighted_average_watts: Schema.Attribute.Decimal;
+    device_watts: Schema.Attribute.Boolean;
+    athlete_id: Schema.Attribute.BigInteger;
+    activity_id: Schema.Attribute.BigInteger;
+    username: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::strava-input.strava-input'
+    >;
   };
 }
 
@@ -1251,6 +1331,7 @@ declare module '@strapi/strapi' {
       'api::diet-plan.diet-plan': ApiDietPlanDietPlan;
       'api::health-vital.health-vital': ApiHealthVitalHealthVital;
       'api::plan.plan': ApiPlanPlan;
+      'api::strava-input.strava-input': ApiStravaInputStravaInput;
       'api::structure.structure': ApiStructureStructure;
       'api::subscription.subscription': ApiSubscriptionSubscription;
       'api::userreview.userreview': ApiUserreviewUserreview;
