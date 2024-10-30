@@ -661,6 +661,7 @@ export interface ApiHealthVitalHealthVital extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    weight_loss_goal: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
