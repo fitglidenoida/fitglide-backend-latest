@@ -469,10 +469,6 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    health_vitals: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::health-vital.health-vital'
-    >;
     mobile: Schema.Attribute.BigInteger &
       Schema.Attribute.SetMinMax<
         {
@@ -512,6 +508,14 @@ export interface PluginUsersPermissionsUser
       'api::strava-input.strava-input'
     >;
     image: Schema.Attribute.String;
+    health_vitals: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::health-vital.health-vital'
+    >;
+    weightlogs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::weightlog.weightlog'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -657,11 +661,12 @@ export interface ApiHealthVitalHealthVital extends Struct.CollectionTypeSchema {
     your_image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    weight_loss_goal: Schema.Attribute.Integer;
+    weeklytarget: Schema.Attribute.Decimal;
     username: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    weight_loss_goal: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -883,6 +888,38 @@ export interface ApiUserreviewUserreview extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::userreview.userreview'
+    >;
+  };
+}
+
+export interface ApiWeightlogWeightlog extends Struct.CollectionTypeSchema {
+  collectionName: 'weightlogs';
+  info: {
+    singularName: 'weightlog';
+    pluralName: 'weightlogs';
+    displayName: 'weightlog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logdate: Schema.Attribute.DateTime;
+    weight: Schema.Attribute.Decimal;
+    username: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::weightlog.weightlog'
     >;
   };
 }
@@ -1336,6 +1373,7 @@ declare module '@strapi/strapi' {
       'api::structure.structure': ApiStructureStructure;
       'api::subscription.subscription': ApiSubscriptionSubscription;
       'api::userreview.userreview': ApiUserreviewUserreview;
+      'api::weightlog.weightlog': ApiWeightlogWeightlog;
       'api::workout-plan.workout-plan': ApiWorkoutPlanWorkoutPlan;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;

@@ -105,14 +105,17 @@
         "audios"
       ]
     },
+    "weight_loss_goal": {
+      "type": "integer"
+    },
+    "weeklytarget": {
+      "type": "decimal"
+    },
     "username": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "health_vitals"
-    },
-    "weight_loss_goal": {
-      "type": "integer"
     }
   }
 }
