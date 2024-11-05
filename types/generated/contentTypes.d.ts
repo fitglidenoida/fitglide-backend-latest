@@ -725,10 +725,6 @@ export interface ApiStravaInputStravaInput extends Struct.CollectionTypeSchema {
   attributes: {
     strava_username: Schema.Attribute.String;
     resource_state: Schema.Attribute.Integer;
-    firstname: Schema.Attribute.String;
-    lastname: Schema.Attribute.String;
-    profile: Schema.Attribute.String;
-    profile_medium: Schema.Attribute.String;
     name: Schema.Attribute.String;
     distance: Schema.Attribute.Decimal;
     moving_time: Schema.Attribute.BigInteger;
