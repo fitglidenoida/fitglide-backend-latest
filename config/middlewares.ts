@@ -6,15 +6,22 @@ module.exports = [
   name: 'strapi::cors',
   config: {
     origin: [
-      'http://localhost:3000',  // Local development
-      'https://fitglide.in',    // Production frontend
-      'https://admin.fitglide.in' // Backend
-    ],
+      'http://localhost:3000',
+      'https://fitglide.in',
+      'https://admin.fitglide.in'
+    ], // Allow your frontend and backend origins
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    credentials: true,
+    credentials: true, // Ensure cookies are sent with requests
+    headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
   },
 },
 'strapi::poweredBy',
+{
+  name: 'strapi::security',
+  config: {
+    referrerPolicy: { policy: 'no-referrer-when-downgrade' }, // Update referrer policy
+  },
+},
 'strapi::query',
 'strapi::body',
 'strapi::session',
