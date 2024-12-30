@@ -84,9 +84,6 @@
     "State": {
       "type": "string"
     },
-    "date_of_birth": {
-      "type": "datetime"
-    },
     "Created_date": {
       "type": "datetime"
     },

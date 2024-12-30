@@ -116,6 +116,19 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "health_vitals"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female"
+      ]
+    },
+    "height": {
+      "type": "integer"
+    },
+    "date_of_birth": {
+      "type": "date"
     }
   }
 }

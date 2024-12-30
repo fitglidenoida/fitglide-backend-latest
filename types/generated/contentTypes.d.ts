@@ -481,7 +481,6 @@ export interface PluginUsersPermissionsUser
     Address_line_1: Schema.Attribute.String;
     City: Schema.Attribute.String;
     State: Schema.Attribute.String;
-    date_of_birth: Schema.Attribute.DateTime;
     Created_date: Schema.Attribute.DateTime;
     modified_date: Schema.Attribute.DateTime;
     Activity_selected: Schema.Attribute.Enumeration<
@@ -667,6 +666,9 @@ export interface ApiHealthVitalHealthVital extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    gender: Schema.Attribute.Enumeration<['Male', 'Female']>;
+    height: Schema.Attribute.Integer;
+    date_of_birth: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
