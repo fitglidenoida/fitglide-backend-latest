@@ -666,9 +666,6 @@ export interface ApiHealthVitalHealthVital extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    gender: Schema.Attribute.Enumeration<['Male', 'Female']>;
-    height: Schema.Attribute.Integer;
-    date_of_birth: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
