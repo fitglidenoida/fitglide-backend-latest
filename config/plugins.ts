@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
     "users-permissions": {
       config: {
         register: {
-          allowedFields: ["mobile"],
+          allowedFields: ["mobile", "First_name", "Last_name"],
           
         },
       },
