@@ -21,49 +21,49 @@
     "category": {
       "type": "string"
     },
-    "calories": {
-      "type": "biginteger"
-    },
-    "total_fat": {
-      "type": "decimal"
-    },
-    "saturated_fat": {
-      "type": "decimal"
-    },
-    "carbohydrate": {
-      "type": "decimal"
-    },
-    "sugar": {
-      "type": "decimal"
-    },
-    "fiber": {
-      "type": "decimal"
-    },
-    "protein": {
-      "type": "decimal"
-    },
-    "sodium": {
-      "type": "decimal"
-    },
-    "vitamin_c": {
-      "type": "integer"
-    },
-    "calcium": {
-      "type": "integer"
-    },
-    "iron": {
-      "type": "integer"
-    },
-    "potassium": {
-      "type": "integer"
-    },
-    "cholestrol": {
-      "type": "integer"
-    },
     "recipe_url": {
       "type": "string"
     },
     "brand": {
+      "type": "string"
+    },
+    "calories": {
+      "type": "string"
+    },
+    "total_fat": {
+      "type": "string"
+    },
+    "saturated_fat": {
+      "type": "string"
+    },
+    "carbohydrate": {
+      "type": "string"
+    },
+    "sugar": {
+      "type": "string"
+    },
+    "fiber": {
+      "type": "string"
+    },
+    "protein": {
+      "type": "string"
+    },
+    "sodium": {
+      "type": "string"
+    },
+    "vitamin_c": {
+      "type": "string"
+    },
+    "calcium": {
+      "type": "string"
+    },
+    "iron": {
+      "type": "string"
+    },
+    "potassium": {
+      "type": "string"
+    },
+    "cholestrol": {
       "type": "string"
     }
   }
