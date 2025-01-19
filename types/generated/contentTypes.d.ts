@@ -560,6 +560,7 @@ export interface ApiDietComponentDietComponent
     potassium: Schema.Attribute.Integer;
     cholestrol: Schema.Attribute.Integer;
     recipe_url: Schema.Attribute.String;
+    brand: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

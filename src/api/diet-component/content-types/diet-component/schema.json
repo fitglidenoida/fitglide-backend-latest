@@ -62,6 +62,9 @@
     },
     "recipe_url": {
       "type": "string"
+    },
+    "brand": {
+      "type": "string"
     }
   }
 }
