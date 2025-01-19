@@ -27,9 +27,6 @@
     "brand": {
       "type": "string"
     },
-    "calories": {
-      "type": "string"
-    },
     "total_fat": {
       "type": "string"
     },
@@ -65,6 +62,9 @@
     },
     "cholestrol": {
       "type": "string"
+    },
+    "calories": {
+      "type": "integer"
     }
   }
 }

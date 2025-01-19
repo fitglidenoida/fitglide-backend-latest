@@ -548,7 +548,6 @@ export interface ApiDietComponentDietComponent
     category: Schema.Attribute.String;
     recipe_url: Schema.Attribute.String;
     brand: Schema.Attribute.String;
-    calories: Schema.Attribute.String;
     total_fat: Schema.Attribute.String;
     saturated_fat: Schema.Attribute.String;
     carbohydrate: Schema.Attribute.String;
@@ -561,6 +560,7 @@ export interface ApiDietComponentDietComponent
     iron: Schema.Attribute.String;
     potassium: Schema.Attribute.String;
     cholestrol: Schema.Attribute.String;
+    calories: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
