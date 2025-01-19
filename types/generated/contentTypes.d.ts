@@ -545,15 +545,21 @@ export interface ApiDietComponentDietComponent
   attributes: {
     component_id: Schema.Attribute.UID;
     name: Schema.Attribute.String;
-    brand: Schema.Attribute.String;
-    energy: Schema.Attribute.BigInteger;
-    fat: Schema.Attribute.Decimal;
-    satuFat: Schema.Attribute.Decimal;
+    category: Schema.Attribute.String;
+    calories: Schema.Attribute.BigInteger;
+    total_fat: Schema.Attribute.Decimal;
+    saturated_fat: Schema.Attribute.Decimal;
     carbohydrate: Schema.Attribute.Decimal;
     sugar: Schema.Attribute.Decimal;
     fiber: Schema.Attribute.Decimal;
     protein: Schema.Attribute.Decimal;
-    salt: Schema.Attribute.Decimal;
+    sodium: Schema.Attribute.Decimal;
+    vitamin_c: Schema.Attribute.Integer;
+    calcium: Schema.Attribute.Integer;
+    iron: Schema.Attribute.Integer;
+    potassium: Schema.Attribute.Integer;
+    cholestrol: Schema.Attribute.Integer;
+    recipe_url: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

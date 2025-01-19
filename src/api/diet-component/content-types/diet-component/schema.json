@@ -18,16 +18,16 @@
     "name": {
       "type": "string"
     },
-    "brand": {
+    "category": {
       "type": "string"
     },
-    "energy": {
+    "calories": {
       "type": "biginteger"
     },
-    "fat": {
+    "total_fat": {
       "type": "decimal"
     },
-    "satuFat": {
+    "saturated_fat": {
       "type": "decimal"
     },
     "carbohydrate": {
@@ -42,8 +42,26 @@
     "protein": {
       "type": "decimal"
     },
-    "salt": {
+    "sodium": {
       "type": "decimal"
+    },
+    "vitamin_c": {
+      "type": "integer"
+    },
+    "calcium": {
+      "type": "integer"
+    },
+    "iron": {
+      "type": "integer"
+    },
+    "potassium": {
+      "type": "integer"
+    },
+    "cholestrol": {
+      "type": "integer"
+    },
+    "recipe_url": {
+      "type": "string"
     }
-}
+  }
 }
