@@ -677,7 +677,7 @@ export interface ApiHealthVitalHealthVital extends Struct.CollectionTypeSchema {
     height: Schema.Attribute.Integer;
     date_of_birth: Schema.Attribute.Date;
     bedtime: Schema.Attribute.Time;
-    hours_of_sleep: Schema.Attribute.DateTime;
+    hours_of_sleep: Schema.Attribute.Decimal;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

@@ -134,7 +134,7 @@
       "type": "time"
     },
     "hours_of_sleep": {
-      "type": "datetime"
+      "type": "decimal"
     }
   }
 }
