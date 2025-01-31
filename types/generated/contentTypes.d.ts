@@ -676,6 +676,8 @@ export interface ApiHealthVitalHealthVital extends Struct.CollectionTypeSchema {
     gender: Schema.Attribute.Enumeration<['Male', 'Female']>;
     height: Schema.Attribute.Integer;
     date_of_birth: Schema.Attribute.Date;
+    bedtime: Schema.Attribute.Time;
+    hours_of_sleep: Schema.Attribute.DateTime;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

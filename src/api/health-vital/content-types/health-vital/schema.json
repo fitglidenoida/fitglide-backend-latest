@@ -129,6 +129,12 @@
     },
     "date_of_birth": {
       "type": "date"
+    },
+    "bedtime": {
+      "type": "time"
+    },
+    "hours_of_sleep": {
+      "type": "datetime"
     }
   }
 }
