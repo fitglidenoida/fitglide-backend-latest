@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sleeplogs",
+  "info": {
+    "singularName": "sleeplog",
+    "pluralName": "sleeplogs",
+    "displayName": "sleeplog",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sleep_log_id": {
+      "type": "uid"
+    },
+    "sleep_duration": {
+      "type": "decimal"
+    },
+    "deep_sleep_duration": {
+      "type": "decimal"
+    },
+    "dream_sleep_duration": {
+      "type": "decimal"
+    },
+    "light_sleep_duration": {
+      "type": "decimal"
+    },
+    "sleep_awake_duration": {
+      "type": "decimal"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "sleeplogs"
+    },
+    "date": {
+      "type": "date"
+    },
+    "planned_sleep_time": {
+      "type": "time"
+    },
+    "actual_sleep_time": {
+      "type": "time"
+    }
+  }
+}

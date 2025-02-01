@@ -515,6 +515,7 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::weightlog.weightlog'
     >;
+    sleeplogs: Schema.Attribute.Relation<'oneToMany', 'api::sleeplog.sleeplog'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -719,6 +720,46 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'>;
+  };
+}
+
+export interface ApiSleeplogSleeplog extends Struct.CollectionTypeSchema {
+  collectionName: 'sleeplogs';
+  info: {
+    singularName: 'sleeplog';
+    pluralName: 'sleeplogs';
+    displayName: 'sleeplog';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sleep_log_id: Schema.Attribute.UID;
+    sleep_duration: Schema.Attribute.Decimal;
+    deep_sleep_duration: Schema.Attribute.Decimal;
+    dream_sleep_duration: Schema.Attribute.Decimal;
+    light_sleep_duration: Schema.Attribute.Decimal;
+    sleep_awake_duration: Schema.Attribute.Decimal;
+    users_permissions_user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    date: Schema.Attribute.Date;
+    planned_sleep_time: Schema.Attribute.Time;
+    actual_sleep_time: Schema.Attribute.Time;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sleeplog.sleeplog'
+    >;
   };
 }
 
@@ -1376,6 +1417,7 @@ declare module '@strapi/strapi' {
       'api::diet-plan.diet-plan': ApiDietPlanDietPlan;
       'api::health-vital.health-vital': ApiHealthVitalHealthVital;
       'api::plan.plan': ApiPlanPlan;
+      'api::sleeplog.sleeplog': ApiSleeplogSleeplog;
       'api::strava-input.strava-input': ApiStravaInputStravaInput;
       'api::structure.structure': ApiStructureStructure;
       'api::subscription.subscription': ApiSubscriptionSubscription;

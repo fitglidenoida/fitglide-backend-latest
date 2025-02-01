@@ -151,6 +151,12 @@
       "relation": "oneToMany",
       "target": "api::weightlog.weightlog",
       "mappedBy": "username"
+    },
+    "sleeplogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sleeplog.sleeplog",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
