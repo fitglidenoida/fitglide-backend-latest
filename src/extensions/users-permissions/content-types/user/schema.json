@@ -152,11 +152,19 @@
       "target": "api::weightlog.weightlog",
       "mappedBy": "username"
     },
+    "authprovider": {
+      "type": "enumeration",
+      "enum": [
+        "FitGlide",
+        "Google",
+        "Facebook"
+      ]
+    },
     "sleeplogs": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::sleeplog.sleeplog",
-      "mappedBy": "users_permissions_user"
+      "mappedBy": "username"
     }
   }
 }

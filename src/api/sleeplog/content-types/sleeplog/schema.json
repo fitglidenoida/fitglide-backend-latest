@@ -30,12 +30,6 @@
     "sleep_awake_duration": {
       "type": "decimal"
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "sleeplogs"
-    },
     "date": {
       "type": "date"
     },
@@ -44,6 +38,12 @@
     },
     "actual_sleep_time": {
       "type": "time"
+    },
+    "username": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "sleeplogs"
     }
   }
 }

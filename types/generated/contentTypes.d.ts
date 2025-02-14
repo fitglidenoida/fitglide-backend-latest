@@ -515,6 +515,9 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::weightlog.weightlog'
     >;
+    authprovider: Schema.Attribute.Enumeration<
+      ['FitGlide', 'Google', 'Facebook']
+    >;
     sleeplogs: Schema.Attribute.Relation<'oneToMany', 'api::sleeplog.sleeplog'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -562,6 +565,7 @@ export interface ApiDietComponentDietComponent
     potassium: Schema.Attribute.String;
     cholestrol: Schema.Attribute.String;
     calories: Schema.Attribute.Integer;
+    food_type: Schema.Attribute.Enumeration<['Veg', 'Non-Veg']>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -741,13 +745,13 @@ export interface ApiSleeplogSleeplog extends Struct.CollectionTypeSchema {
     dream_sleep_duration: Schema.Attribute.Decimal;
     light_sleep_duration: Schema.Attribute.Decimal;
     sleep_awake_duration: Schema.Attribute.Decimal;
-    users_permissions_user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     date: Schema.Attribute.Date;
     planned_sleep_time: Schema.Attribute.Time;
     actual_sleep_time: Schema.Attribute.Time;
+    username: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

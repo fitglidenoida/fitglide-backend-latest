@@ -65,6 +65,13 @@
     },
     "calories": {
       "type": "integer"
+    },
+    "food_type": {
+      "type": "enumeration",
+      "enum": [
+        "Veg",
+        "Non-Veg"
+      ]
     }
   }
 }
