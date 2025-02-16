@@ -110,12 +110,6 @@
         "audios"
       ]
     },
-    "diet_plans": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::diet-plan.diet-plan",
-      "mappedBy": "username"
-    },
     "workout_plans": {
       "type": "relation",
       "relation": "oneToMany",

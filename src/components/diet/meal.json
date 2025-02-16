@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_diet_meals",
+  "info": {
+    "displayName": "meal",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "meal_time_slot": {
+      "type": "time"
+    },
+    "diet_components": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::diet-component.diet-component"
+    },
+    "calories": {
+      "type": "string"
+    },
+    "proteins": {
+      "type": "string"
+    },
+    "sugar": {
+      "type": "string"
+    },
+    "carbs": {
+      "type": "string"
+    },
+    "fats": {
+      "type": "string"
+    },
+    "meal_time": {
+      "type": "enumeration",
+      "enum": [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack",
+        "Drinks"
+      ]
+    }
+  }
+}

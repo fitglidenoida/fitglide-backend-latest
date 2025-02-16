@@ -489,10 +489,6 @@ export interface PluginUsersPermissionsUser
     your_image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    diet_plans: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::diet-plan.diet-plan'
-    >;
     workout_plans: Schema.Attribute.Relation<
       'oneToMany',
       'api::workout-plan.workout-plan'
@@ -593,15 +589,16 @@ export interface ApiDietPlanDietPlan extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Planid: Schema.Attribute.UID;
-    Date: Schema.Attribute.DateTime;
-    Notes: Schema.Attribute.Text;
-    water_intake: Schema.Attribute.BigInteger;
-    diet_name: Schema.Attribute.String;
-    username: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
+    plan_name: Schema.Attribute.String;
+    plan_type: Schema.Attribute.String;
+    total_calories: Schema.Attribute.Integer;
+    total_protein: Schema.Attribute.String;
+    total_carbs: Schema.Attribute.String;
+    total_fats: Schema.Attribute.String;
+    diet_preference: Schema.Attribute.Enumeration<['Veg', 'Non-Veg']>;
+    tdee_range: Schema.Attribute.JSON;
+    notes: Schema.Attribute.RichText;
+    meal: Schema.Attribute.Component<'diet.meal', true>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
