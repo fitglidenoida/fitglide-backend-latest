@@ -2,27 +2,26 @@
  * diet-plan controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from '@strapi/strapi';
 
 export default factories.createCoreController('api::diet-plan.diet-plan', ({ strapi }) => ({
-    async find(ctx) {
-        ctx.query = {
-            ...ctx.query,
+  async find(ctx) {
+    try {
+      const data = await strapi.entityService.findMany('api::diet-plan.diet-plan', {
+        populate: {
+          meals: {
             populate: {
-              meals: {
-                populate: {
-                  food_items: {
-                    fields: ["name", "calories", "protein", "carbohydrate", "total_fat"]
-                  }
-                }
-              }
+              diet_components: true // Assuming you want to populate food details for each meal
             }
-          };
-          const { data, meta } = await super.find(ctx);
-          return { data, meta };
+          }
         }
-      }
-    )
-);
+      });
       
 
+      return { data };
+    } catch (error) {
+      console.error('Error fetching diet plans:', error);
+      ctx.throw(500, 'Internal Server Error');
+    }
+  }
+}));

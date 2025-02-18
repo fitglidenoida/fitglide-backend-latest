@@ -562,6 +562,7 @@ export interface ApiDietComponentDietComponent
     cholestrol: Schema.Attribute.String;
     calories: Schema.Attribute.Integer;
     food_type: Schema.Attribute.Enumeration<['Veg', 'Non-Veg']>;
+    meals: Schema.Attribute.Relation<'manyToMany', 'api::meal.meal'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -590,15 +591,9 @@ export interface ApiDietPlanDietPlan extends Struct.CollectionTypeSchema {
   };
   attributes: {
     plan_name: Schema.Attribute.String;
-    plan_type: Schema.Attribute.String;
     total_calories: Schema.Attribute.Integer;
-    total_protein: Schema.Attribute.String;
-    total_carbs: Schema.Attribute.String;
-    total_fats: Schema.Attribute.String;
-    diet_preference: Schema.Attribute.Enumeration<['Veg', 'Non-Veg']>;
-    tdee_range: Schema.Attribute.JSON;
     notes: Schema.Attribute.RichText;
-    meal: Schema.Attribute.Component<'diet.meal', true>;
+    meals: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -692,6 +687,46 @@ export interface ApiHealthVitalHealthVital extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::health-vital.health-vital'
     >;
+  };
+}
+
+export interface ApiMealMeal extends Struct.CollectionTypeSchema {
+  collectionName: 'meals';
+  info: {
+    singularName: 'meal';
+    pluralName: 'meals';
+    displayName: 'meal';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    diet_components: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::diet-component.diet-component'
+    >;
+    diet_plan: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::diet-plan.diet-plan'
+    >;
+    meal_id: Schema.Attribute.UID;
+    meal_time: Schema.Attribute.Time;
+    base_portion: Schema.Attribute.Integer;
+    base_portion_unit: Schema.Attribute.Enumeration<
+      ['nos', 'gm', 'cup', 'bow', 'teacups']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
   };
 }
 
@@ -1417,6 +1452,7 @@ declare module '@strapi/strapi' {
       'api::diet-component.diet-component': ApiDietComponentDietComponent;
       'api::diet-plan.diet-plan': ApiDietPlanDietPlan;
       'api::health-vital.health-vital': ApiHealthVitalHealthVital;
+      'api::meal.meal': ApiMealMeal;
       'api::plan.plan': ApiPlanPlan;
       'api::sleeplog.sleeplog': ApiSleeplogSleeplog;
       'api::strava-input.strava-input': ApiStravaInputStravaInput;

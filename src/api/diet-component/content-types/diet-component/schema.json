@@ -72,6 +72,12 @@
         "Veg",
         "Non-Veg"
       ]
+    },
+    "meals": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::meal.meal",
+      "mappedBy": "diet_components"
     }
   }
 }

@@ -15,38 +15,17 @@
     "plan_name": {
       "type": "string"
     },
-    "plan_type": {
-      "type": "string"
-    },
     "total_calories": {
       "type": "integer"
-    },
-    "total_protein": {
-      "type": "string"
-    },
-    "total_carbs": {
-      "type": "string"
-    },
-    "total_fats": {
-      "type": "string"
-    },
-    "diet_preference": {
-      "type": "enumeration",
-      "enum": [
-        "Veg",
-        "Non-Veg"
-      ]
-    },
-    "tdee_range": {
-      "type": "json"
     },
     "notes": {
       "type": "richtext"
     },
-    "meal": {
-      "type": "component",
-      "repeatable": true,
-      "component": "diet.meal"
+    "meals": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::meal.meal",
+      "mappedBy": "diet_plan"
     }
   }
 }

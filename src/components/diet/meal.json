@@ -9,11 +9,6 @@
     "meal_time_slot": {
       "type": "time"
     },
-    "diet_components": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::diet-component.diet-component"
-    },
     "calories": {
       "type": "string"
     },
@@ -38,6 +33,16 @@
         "Snack",
         "Drinks"
       ]
+    },
+    "diet_components": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::diet-component.diet-component"
+    },
+    "meals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "diet.components"
     }
   }
 }

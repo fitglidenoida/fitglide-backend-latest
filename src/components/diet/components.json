@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_diet_components",
+  "info": {
+    "displayName": "components",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "diet_components": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::diet-component.diet-component"
+    },
+    "mealtime": {
+      "type": "time"
+    }
+  }
+}
