@@ -12,20 +12,36 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "plan_name": {
-      "type": "string"
+    "plan_id": {
+      "type": "uid"
     },
     "total_calories": {
       "type": "integer"
     },
-    "notes": {
-      "type": "richtext"
+    "diet_preference": {
+      "type": "enumeration",
+      "enum": [
+        "Veg",
+        "Non_Veg"
+      ]
+    },
+    "meals_per_day": {
+      "type": "integer"
     },
     "meals": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::meal.meal",
       "mappedBy": "diet_plan"
+    },
+    "Active": {
+      "type": "boolean"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "diet_plans"
     }
   }
 }

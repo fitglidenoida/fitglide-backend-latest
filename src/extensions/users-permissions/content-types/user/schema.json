@@ -159,6 +159,12 @@
       "relation": "oneToMany",
       "target": "api::sleeplog.sleeplog",
       "mappedBy": "username"
+    },
+    "diet_plans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::diet-plan.diet-plan",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

@@ -515,6 +515,10 @@ export interface PluginUsersPermissionsUser
       ['FitGlide', 'Google', 'Facebook']
     >;
     sleeplogs: Schema.Attribute.Relation<'oneToMany', 'api::sleeplog.sleeplog'>;
+    diet_plans: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::diet-plan.diet-plan'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -590,6 +594,44 @@ export interface ApiDietPlanDietPlan extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    plan_id: Schema.Attribute.UID;
+    total_calories: Schema.Attribute.Integer;
+    diet_preference: Schema.Attribute.Enumeration<['Veg', 'Non_Veg']>;
+    meals_per_day: Schema.Attribute.Integer;
+    meals: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
+    Active: Schema.Attribute.Boolean;
+    users_permissions_user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::diet-plan.diet-plan'
+    >;
+  };
+}
+
+export interface ApiDietTemplateDietTemplate
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'diet_templates';
+  info: {
+    singularName: 'diet-template';
+    pluralName: 'diet-templates';
+    displayName: 'diet-template';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    diet_template_id: Schema.Attribute.UID;
     plan_name: Schema.Attribute.String;
     total_calories: Schema.Attribute.Integer;
     notes: Schema.Attribute.RichText;
@@ -604,7 +646,7 @@ export interface ApiDietPlanDietPlan extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::diet-plan.diet-plan'
+      'api::diet-template.diet-template'
     >;
   };
 }
@@ -708,15 +750,19 @@ export interface ApiMealMeal extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::diet-component.diet-component'
     >;
-    diet_plan: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::diet-plan.diet-plan'
-    >;
     meal_id: Schema.Attribute.UID;
     meal_time: Schema.Attribute.Time;
     base_portion: Schema.Attribute.Integer;
     base_portion_unit: Schema.Attribute.Enumeration<
       ['nos', 'gm', 'cup', 'bow', 'teacups']
+    >;
+    diet_template: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::diet-template.diet-template'
+    >;
+    diet_plan: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::diet-plan.diet-plan'
     >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -1451,6 +1497,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::diet-component.diet-component': ApiDietComponentDietComponent;
       'api::diet-plan.diet-plan': ApiDietPlanDietPlan;
+      'api::diet-template.diet-template': ApiDietTemplateDietTemplate;
       'api::health-vital.health-vital': ApiHealthVitalHealthVital;
       'api::meal.meal': ApiMealMeal;
       'api::plan.plan': ApiPlanPlan;

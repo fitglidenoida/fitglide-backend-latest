@@ -24,12 +24,6 @@
       "target": "api::diet-component.diet-component",
       "inversedBy": "meals"
     },
-    "diet_plan": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::diet-plan.diet-plan",
-      "inversedBy": "meals"
-    },
     "meal_id": {
       "type": "uid"
     },
@@ -48,6 +42,18 @@
         "bow",
         "teacups"
       ]
+    },
+    "diet_template": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::diet-template.diet-template",
+      "inversedBy": "meals"
+    },
+    "diet_plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::diet-plan.diet-plan",
+      "inversedBy": "meals"
     }
   }
 }
