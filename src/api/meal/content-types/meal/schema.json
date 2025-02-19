@@ -36,23 +36,17 @@
     "base_portion_unit": {
       "type": "enumeration",
       "enum": [
-        "nos",
-        "gm",
-        "cup",
-        "bow",
-        "teacups"
+        "Nos",
+        "Bowl",
+        "Cup",
+        "Glass",
+        "Tea Cup"
       ]
     },
     "diet_template": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::diet-template.diet-template",
-      "inversedBy": "meals"
-    },
-    "diet_plan": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::diet-plan.diet-plan",
       "inversedBy": "meals"
     }
   }

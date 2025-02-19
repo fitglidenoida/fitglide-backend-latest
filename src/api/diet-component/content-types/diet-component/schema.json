@@ -78,6 +78,12 @@
       "relation": "manyToMany",
       "target": "api::meal.meal",
       "mappedBy": "diet_components"
+    },
+    "diet_plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::diet-plan.diet-plan",
+      "inversedBy": "diet_components"
     }
   }
 }

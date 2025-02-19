@@ -28,12 +28,6 @@
     "meals_per_day": {
       "type": "integer"
     },
-    "meals": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::meal.meal",
-      "mappedBy": "diet_plan"
-    },
     "Active": {
       "type": "boolean"
     },
@@ -42,6 +36,34 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "diet_plans"
+    },
+    "meal_name": {
+      "type": "string"
+    },
+    "meal_description": {
+      "type": "string"
+    },
+    "diet_components": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::diet-component.diet-component",
+      "mappedBy": "diet_plan"
+    },
+    "meal_time": {
+      "type": "time"
+    },
+    "base_portion": {
+      "type": "string"
+    },
+    "base_portion_unit": {
+      "type": "enumeration",
+      "enum": [
+        "Nos",
+        "Bowl",
+        "Cup",
+        "Glass",
+        "Tea Cup"
+      ]
     }
   }
 }

@@ -567,6 +567,10 @@ export interface ApiDietComponentDietComponent
     calories: Schema.Attribute.Integer;
     food_type: Schema.Attribute.Enumeration<['Veg', 'Non-Veg']>;
     meals: Schema.Attribute.Relation<'manyToMany', 'api::meal.meal'>;
+    diet_plan: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::diet-plan.diet-plan'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -598,11 +602,21 @@ export interface ApiDietPlanDietPlan extends Struct.CollectionTypeSchema {
     total_calories: Schema.Attribute.Integer;
     diet_preference: Schema.Attribute.Enumeration<['Veg', 'Non_Veg']>;
     meals_per_day: Schema.Attribute.Integer;
-    meals: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
     Active: Schema.Attribute.Boolean;
     users_permissions_user: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
+    >;
+    meal_name: Schema.Attribute.String;
+    meal_description: Schema.Attribute.String;
+    diet_components: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::diet-component.diet-component'
+    >;
+    meal_time: Schema.Attribute.Time;
+    base_portion: Schema.Attribute.String;
+    base_portion_unit: Schema.Attribute.Enumeration<
+      ['Nos', 'Bowl', 'Cup', 'Glass', 'Tea Cup']
     >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -754,15 +768,11 @@ export interface ApiMealMeal extends Struct.CollectionTypeSchema {
     meal_time: Schema.Attribute.Time;
     base_portion: Schema.Attribute.Integer;
     base_portion_unit: Schema.Attribute.Enumeration<
-      ['nos', 'gm', 'cup', 'bow', 'teacups']
+      ['Nos', 'Bowl', 'Cup', 'Glass', 'Tea Cup']
     >;
     diet_template: Schema.Attribute.Relation<
       'manyToOne',
       'api::diet-template.diet-template'
-    >;
-    diet_plan: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::diet-plan.diet-plan'
     >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
