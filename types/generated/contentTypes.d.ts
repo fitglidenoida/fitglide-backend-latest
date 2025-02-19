@@ -640,6 +640,7 @@ export interface ApiDietTemplateDietTemplate
     singularName: 'diet-template';
     pluralName: 'diet-templates';
     displayName: 'diet-template';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -650,6 +651,7 @@ export interface ApiDietTemplateDietTemplate
     total_calories: Schema.Attribute.Integer;
     notes: Schema.Attribute.RichText;
     meals: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
+    diet_preference: Schema.Attribute.Enumeration<['Veg', 'Non-Veg']>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
