@@ -84,6 +84,50 @@
       "relation": "manyToOne",
       "target": "api::diet-plan.diet-plan",
       "inversedBy": "diet_components"
+    },
+    "portion_size": {
+      "type": "integer"
+    },
+    "unit": {
+      "type": "enumeration",
+      "enum": [
+        "Nos",
+        "gm",
+        "Cup",
+        "Bowl",
+        "Glass",
+        "Tea Cup"
+      ]
+    },
+    "cuisine": {
+      "type": "enumeration",
+      "enum": [
+        "North Indian",
+        "South Indian",
+        "Gujarati",
+        "Bengali",
+        "Marathi",
+        "Rajasthani",
+        "Punjabi",
+        "Kashmiri",
+        "Konkani",
+        "North Eastern"
+      ]
+    },
+    "meal_suitability": {
+      "type": "enumeration",
+      "enum": [
+        "Breakfast, Snack",
+        "Breakfast, Lunch, Dinner",
+        "Lunch, Dinner",
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack"
+      ]
+    },
+    "is_common": {
+      "type": "boolean"
     }
   }
 }

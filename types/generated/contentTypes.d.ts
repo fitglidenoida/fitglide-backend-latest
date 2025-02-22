@@ -571,6 +571,36 @@ export interface ApiDietComponentDietComponent
       'manyToOne',
       'api::diet-plan.diet-plan'
     >;
+    portion_size: Schema.Attribute.Integer;
+    unit: Schema.Attribute.Enumeration<
+      ['Nos', 'gm', 'Cup', 'Bowl', 'Glass', 'Tea Cup']
+    >;
+    cuisine: Schema.Attribute.Enumeration<
+      [
+        'North Indian',
+        'South Indian',
+        'Gujarati',
+        'Bengali',
+        'Marathi',
+        'Rajasthani',
+        'Punjabi',
+        'Kashmiri',
+        'Konkani',
+        'North Eastern',
+      ]
+    >;
+    meal_suitability: Schema.Attribute.Enumeration<
+      [
+        'Breakfast, Snack',
+        'Breakfast, Lunch, Dinner',
+        'Lunch, Dinner',
+        'Breakfast',
+        'Lunch',
+        'Dinner',
+        'Snack',
+      ]
+    >;
+    is_common: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
