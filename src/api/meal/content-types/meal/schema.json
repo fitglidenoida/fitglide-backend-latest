@@ -48,6 +48,12 @@
       "relation": "manyToOne",
       "target": "api::diet-template.diet-template",
       "inversedBy": "meals"
+    },
+    "diet_plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::diet-plan.diet-plan",
+      "inversedBy": "meals"
     }
   }
 }

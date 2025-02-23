@@ -25,9 +25,6 @@
         "Non_Veg"
       ]
     },
-    "meals_per_day": {
-      "type": "integer"
-    },
     "Active": {
       "type": "boolean"
     },
@@ -37,33 +34,11 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "diet_plans"
     },
-    "meal_name": {
-      "type": "string"
-    },
-    "meal_description": {
-      "type": "string"
-    },
-    "diet_components": {
+    "meals": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::diet-component.diet-component",
+      "target": "api::meal.meal",
       "mappedBy": "diet_plan"
-    },
-    "meal_time": {
-      "type": "time"
-    },
-    "base_portion": {
-      "type": "string"
-    },
-    "base_portion_unit": {
-      "type": "enumeration",
-      "enum": [
-        "Nos",
-        "Bowl",
-        "Cup",
-        "Glass",
-        "Tea Cup"
-      ]
     }
   }
 }
