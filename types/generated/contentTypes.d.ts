@@ -796,6 +796,7 @@ export interface ApiMealMeal extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::diet-plan.diet-plan'
     >;
+    meal_date: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

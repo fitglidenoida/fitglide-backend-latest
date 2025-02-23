@@ -54,6 +54,9 @@
       "relation": "manyToOne",
       "target": "api::diet-plan.diet-plan",
       "inversedBy": "meals"
+    },
+    "meal_date": {
+      "type": "date"
     }
   }
 }
