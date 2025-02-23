@@ -597,6 +597,7 @@ export interface ApiDietComponentDietComponent
       ]
     >;
     is_common: Schema.Attribute.Boolean;
+    consumed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
