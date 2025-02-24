@@ -82,6 +82,9 @@
       "relation": "manyToOne",
       "target": "api::workout-plan.workout-plan",
       "inversedBy": "exercises"
+    },
+    "equipment": {
+      "type": "string"
     }
   }
 }

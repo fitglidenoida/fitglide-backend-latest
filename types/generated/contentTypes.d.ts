@@ -758,6 +758,7 @@ export interface ApiExerciseExercise extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::workout-plan.workout-plan'
     >;
+    equipment: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
