@@ -598,6 +598,10 @@ export interface ApiDietComponentDietComponent
     >;
     is_common: Schema.Attribute.Boolean;
     consumed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    exercises: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::exercise.exercise'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -679,6 +683,92 @@ export interface ApiDietTemplateDietTemplate
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::diet-template.diet-template'
+    >;
+  };
+}
+
+export interface ApiEquipmentEquipment extends Struct.CollectionTypeSchema {
+  collectionName: 'equipments';
+  info: {
+    singularName: 'equipment';
+    pluralName: 'equipments';
+    displayName: 'equipment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::equipment.equipment'
+    >;
+  };
+}
+
+export interface ApiExerciseExercise extends Struct.CollectionTypeSchema {
+  collectionName: 'exercises';
+  info: {
+    singularName: 'exercise';
+    pluralName: 'exercises';
+    displayName: 'exercise';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    excercise_id: Schema.Attribute.UID;
+    name: Schema.Attribute.String & Schema.Attribute.Unique;
+    description: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
+      ['Cardio', 'Strength', 'Flexibility', 'Core', 'HIIT']
+    >;
+    difficulty: Schema.Attribute.Enumeration<
+      ['Beginner', 'Intermediate', 'Advanced']
+    >;
+    duration: Schema.Attribute.Decimal;
+    calories_per_minute: Schema.Attribute.Decimal;
+    steps: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    muscle_groups: Schema.Attribute.Enumeration<
+      ['Arms', 'Legs', 'Core', 'Back', 'Chest', 'Full Body']
+    >;
+    diet_components: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::diet-component.diet-component'
+    >;
+    workout_plan: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::workout-plan.workout-plan'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::exercise.exercise'
     >;
   };
 }
@@ -1138,6 +1228,7 @@ export interface ApiWorkoutPlanWorkoutPlan extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::structure.structure'
     >;
+    exercises: Schema.Attribute.Relation<'oneToMany', 'api::exercise.exercise'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1531,6 +1622,8 @@ declare module '@strapi/strapi' {
       'api::diet-component.diet-component': ApiDietComponentDietComponent;
       'api::diet-plan.diet-plan': ApiDietPlanDietPlan;
       'api::diet-template.diet-template': ApiDietTemplateDietTemplate;
+      'api::equipment.equipment': ApiEquipmentEquipment;
+      'api::exercise.exercise': ApiExerciseExercise;
       'api::health-vital.health-vital': ApiHealthVitalHealthVital;
       'api::meal.meal': ApiMealMeal;
       'api::plan.plan': ApiPlanPlan;

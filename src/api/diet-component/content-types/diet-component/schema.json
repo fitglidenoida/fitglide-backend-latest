@@ -126,6 +126,12 @@
     "consumed": {
       "type": "boolean",
       "default": false
+    },
+    "exercises": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exercise.exercise",
+      "mappedBy": "diet_components"
     }
   }
 }

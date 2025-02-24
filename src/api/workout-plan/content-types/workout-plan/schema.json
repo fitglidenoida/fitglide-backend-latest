@@ -121,6 +121,12 @@
       "relation": "manyToOne",
       "target": "api::structure.structure",
       "inversedBy": "workout_plans"
+    },
+    "exercises": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exercise.exercise",
+      "mappedBy": "workout_plan"
     }
   }
 }
