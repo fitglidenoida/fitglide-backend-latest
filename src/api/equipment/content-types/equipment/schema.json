@@ -26,6 +26,12 @@
       ],
       "type": "media",
       "multiple": true
+    },
+    "exercises": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exercise.exercise",
+      "inversedBy": "equipment"
     }
   }
 }

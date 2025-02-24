@@ -598,10 +598,6 @@ export interface ApiDietComponentDietComponent
     >;
     is_common: Schema.Attribute.Boolean;
     consumed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    exercises: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::exercise.exercise'
-    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -704,6 +700,10 @@ export interface ApiEquipmentEquipment extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    exercises: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::exercise.exercise'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -750,15 +750,14 @@ export interface ApiExerciseExercise extends Struct.CollectionTypeSchema {
     muscle_groups: Schema.Attribute.Enumeration<
       ['Arms', 'Legs', 'Core', 'Back', 'Chest', 'Full Body']
     >;
-    diet_components: Schema.Attribute.Relation<
+    equipment: Schema.Attribute.Relation<
       'manyToMany',
-      'api::diet-component.diet-component'
+      'api::equipment.equipment'
     >;
     workout_plan: Schema.Attribute.Relation<
       'manyToOne',
       'api::workout-plan.workout-plan'
     >;
-    equipment: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

@@ -71,10 +71,10 @@
         "Full Body"
       ]
     },
-    "diet_components": {
+    "equipment": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::diet-component.diet-component",
+      "target": "api::equipment.equipment",
       "inversedBy": "exercises"
     },
     "workout_plan": {
@@ -82,9 +82,6 @@
       "relation": "manyToOne",
       "target": "api::workout-plan.workout-plan",
       "inversedBy": "exercises"
-    },
-    "equipment": {
-      "type": "string"
     }
   }
 }
