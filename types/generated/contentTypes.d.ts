@@ -1194,8 +1194,7 @@ export interface ApiWorkoutPlanWorkoutPlan extends Struct.CollectionTypeSchema {
     Description: Schema.Attribute.String;
     Distance: Schema.Attribute.Decimal;
     DistancePlanned: Schema.Attribute.BigInteger;
-    StartTime: Schema.Attribute.DateTime;
-    StartTimePlanned: Schema.Attribute.DateTime;
+    scheduled_date: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
     WorkoutDay: Schema.Attribute.DateTime;
     TotalTime: Schema.Attribute.Decimal;

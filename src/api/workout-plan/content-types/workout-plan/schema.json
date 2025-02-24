@@ -27,10 +27,7 @@
     "DistancePlanned": {
       "type": "biginteger"
     },
-    "StartTime": {
-      "type": "datetime"
-    },
-    "StartTimePlanned": {
+    "scheduled_date": {
       "type": "datetime"
     },
     "Title": {
