@@ -42,6 +42,9 @@
     },
     "points_earned": {
       "type": "integer"
+    },
+    "diet_goal": {
+      "type": "string"
     }
   }
 }

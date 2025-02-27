@@ -635,6 +635,7 @@ export interface ApiDietPlanDietPlan extends Struct.CollectionTypeSchema {
     >;
     meals: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
     points_earned: Schema.Attribute.Integer;
+    diet_goal: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
