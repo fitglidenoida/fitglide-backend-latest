@@ -634,6 +634,7 @@ export interface ApiDietPlanDietPlan extends Struct.CollectionTypeSchema {
       'plugin::users-permissions.user'
     >;
     meals: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
+    points_earned: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

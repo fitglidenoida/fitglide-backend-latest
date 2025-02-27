@@ -39,6 +39,9 @@
       "relation": "oneToMany",
       "target": "api::meal.meal",
       "mappedBy": "diet_plan"
+    },
+    "points_earned": {
+      "type": "integer"
     }
   }
 }
