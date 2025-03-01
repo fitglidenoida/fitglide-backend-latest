@@ -39,12 +39,6 @@
     },
     "Max_Value": {
       "type": "biginteger"
-    },
-    "workout_plans": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::workout-plan.workout-plan",
-      "mappedBy": "structure"
     }
   }
 }

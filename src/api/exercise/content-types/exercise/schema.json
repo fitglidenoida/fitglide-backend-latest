@@ -82,6 +82,82 @@
       "relation": "manyToOne",
       "target": "api::workout-plan.workout-plan",
       "inversedBy": "exercises"
+    },
+    "sport_type": {
+      "type": "enumeration",
+      "enum": [
+        "Running",
+        "Cycling",
+        "Swimming",
+        "Hiking",
+        "Strength Training",
+        "Cardiovascular (Cardio) ",
+        "Full-Body Training  ",
+        "Legs and Lower Body",
+        "Upper Body",
+        "Core and Abs",
+        "Hybrid (Strength + Cardio)",
+        "Plyometric (Explosive)",
+        "Functional Training",
+        "Flexibility and Mobility ",
+        "Powerlifting",
+        "Bodyweight Training",
+        "High-Intensity Interval Training (HIIT) ",
+        "Pilates",
+        "Yoga",
+        "Circuit Training",
+        "Isometric Training ",
+        "Endurance Training",
+        "Agility and Speed Training",
+        "Rehabilitation and Low-Impact ",
+        "Dance Fitness ",
+        "Rowing",
+        "Badminton",
+        "Tennis",
+        "Jogging"
+      ]
+    },
+    "distance_planned": {
+      "type": "decimal"
+    },
+    "elevation_planned": {
+      "type": "decimal"
+    },
+    "cadence_planned": {
+      "type": "decimal"
+    },
+    "velocity_planned": {
+      "type": "decimal"
+    },
+    "power_planned": {
+      "type": "decimal"
+    },
+    "target_muscle": {
+      "type": "string"
+    },
+    "intensity_level": {
+      "type": "decimal"
+    },
+    "reps": {
+      "type": "integer"
+    },
+    "sets": {
+      "type": "integer"
+    },
+    "bike_own": {
+      "type": "boolean"
+    },
+    "rental_bikes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rental-bike.rental-bike",
+      "mappedBy": "exercise"
+    },
+    "gps_route_planned": {
+      "type": "json"
+    },
+    "location_planned": {
+      "type": "json"
     }
   }
 }

@@ -125,12 +125,6 @@
     "athlete_id": {
       "type": "biginteger"
     },
-    "strava_inputs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::strava-input.strava-input",
-      "mappedBy": "user"
-    },
     "image": {
       "type": "string"
     },

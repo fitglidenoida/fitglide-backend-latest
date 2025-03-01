@@ -498,10 +498,6 @@ export interface PluginUsersPermissionsUser
       'api::subscription.subscription'
     >;
     athlete_id: Schema.Attribute.BigInteger;
-    strava_inputs: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::strava-input.strava-input'
-    >;
     image: Schema.Attribute.String;
     health_vitals: Schema.Attribute.Relation<
       'oneToMany',
@@ -760,6 +756,55 @@ export interface ApiExerciseExercise extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::workout-plan.workout-plan'
     >;
+    sport_type: Schema.Attribute.Enumeration<
+      [
+        'Running',
+        'Cycling',
+        'Swimming',
+        'Hiking',
+        'Strength Training',
+        'Cardiovascular (Cardio) ',
+        'Full-Body Training  ',
+        'Legs and Lower Body',
+        'Upper Body',
+        'Core and Abs',
+        'Hybrid (Strength + Cardio)',
+        'Plyometric (Explosive)',
+        'Functional Training',
+        'Flexibility and Mobility ',
+        'Powerlifting',
+        'Bodyweight Training',
+        'High-Intensity Interval Training (HIIT) ',
+        'Pilates',
+        'Yoga',
+        'Circuit Training',
+        'Isometric Training ',
+        'Endurance Training',
+        'Agility and Speed Training',
+        'Rehabilitation and Low-Impact ',
+        'Dance Fitness ',
+        'Rowing',
+        'Badminton',
+        'Tennis',
+        'Jogging',
+      ]
+    >;
+    distance_planned: Schema.Attribute.Decimal;
+    elevation_planned: Schema.Attribute.Decimal;
+    cadence_planned: Schema.Attribute.Decimal;
+    velocity_planned: Schema.Attribute.Decimal;
+    power_planned: Schema.Attribute.Decimal;
+    target_muscle: Schema.Attribute.String;
+    intensity_level: Schema.Attribute.Decimal;
+    reps: Schema.Attribute.Integer;
+    sets: Schema.Attribute.Integer;
+    bike_own: Schema.Attribute.Boolean;
+    rental_bikes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::rental-bike.rental-bike'
+    >;
+    gps_route_planned: Schema.Attribute.JSON;
+    location_planned: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -930,6 +975,48 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRentalBikeRentalBike extends Struct.CollectionTypeSchema {
+  collectionName: 'rental_bikes';
+  info: {
+    singularName: 'rental-bike';
+    pluralName: 'rental-bikes';
+    displayName: 'rental-bike';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bike_id: Schema.Attribute.UID & Schema.Attribute.DefaultTo<'bike-001'>;
+    location: Schema.Attribute.JSON;
+    availability: Schema.Attribute.Boolean;
+    rental_price: Schema.Attribute.Integer;
+    bike_make: Schema.Attribute.String;
+    bike_model: Schema.Attribute.String;
+    geared: Schema.Attribute.Boolean;
+    bike_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    exercise: Schema.Attribute.Relation<'manyToOne', 'api::exercise.exercise'>;
+    workout_plan: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::workout-plan.workout-plan'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::rental-bike.rental-bike'
+    >;
+  };
+}
+
 export interface ApiSleeplogSleeplog extends Struct.CollectionTypeSchema {
   collectionName: 'sleeplogs';
   info: {
@@ -986,11 +1073,10 @@ export interface ApiStravaInputStravaInput extends Struct.CollectionTypeSchema {
     resource_state: Schema.Attribute.Integer;
     name: Schema.Attribute.String;
     distance: Schema.Attribute.Decimal;
-    moving_time: Schema.Attribute.BigInteger;
-    elapsed_time: Schema.Attribute.BigInteger;
-    total_elevation_gain: Schema.Attribute.BigInteger;
+    moving_time: Schema.Attribute.Decimal;
+    elapsed_time: Schema.Attribute.Decimal;
+    total_elevation_gain: Schema.Attribute.Decimal;
     elev_high: Schema.Attribute.BigInteger;
-    sport_type: Schema.Attribute.String;
     start_date: Schema.Attribute.DateTime;
     start_date_local: Schema.Attribute.DateTime;
     timezone: Schema.Attribute.String;
@@ -998,11 +1084,10 @@ export interface ApiStravaInputStravaInput extends Struct.CollectionTypeSchema {
     end_latlng: Schema.Attribute.Decimal;
     achievement_count: Schema.Attribute.Integer;
     kudos_count: Schema.Attribute.Integer;
-    workout_type: Schema.Attribute.BigInteger;
     upload_id_str: Schema.Attribute.String;
     average_speed: Schema.Attribute.Decimal;
     max_speed: Schema.Attribute.Decimal;
-    gear_id: Schema.Attribute.BigInteger;
+    gear_id: Schema.Attribute.Integer;
     description: Schema.Attribute.String;
     photos: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -1015,16 +1100,53 @@ export interface ApiStravaInputStravaInput extends Struct.CollectionTypeSchema {
     max_watts: Schema.Attribute.Decimal;
     weighted_average_watts: Schema.Attribute.Decimal;
     device_watts: Schema.Attribute.Boolean;
-    athlete_id: Schema.Attribute.BigInteger;
-    activity_id: Schema.Attribute.BigInteger;
+    athlete_id: Schema.Attribute.Integer;
+    activity_id: Schema.Attribute.Integer;
     username: Schema.Attribute.Relation<
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    user: Schema.Attribute.Relation<
+    workout_plan: Schema.Attribute.Relation<
       'manyToOne',
-      'plugin::users-permissions.user'
+      'api::workout-plan.workout-plan'
     >;
+    cadence: Schema.Attribute.Integer;
+    sport_type: Schema.Attribute.Enumeration<
+      [
+        'Running',
+        'Cycling',
+        'Swimming',
+        'Hiking',
+        'Strength',
+        'Cardio',
+        'Full-Body ',
+        'Lower Body',
+        'Upper Body',
+        'Core',
+        'Hybrid (Strength + Cardio)',
+        'Plyometric (Explosive)',
+        'Functional Training',
+        'Flexibility and Mobility ',
+        'Powerlifting',
+        'Bodyweight Training',
+        'High-Intensity Interval Training (HIIT) ',
+        'Pilates',
+        'Yoga',
+        'Circuit Training',
+        'Isometric Training ',
+        'Endurance Training',
+        'Agility and Speed Training',
+        'Rehabilitation and Low-Impact ',
+        'Dance Fitness ',
+        'Rowing',
+        'Badminton',
+        'Tennis',
+        'Jogging',
+      ]
+    >;
+    intensity_level_planned: Schema.Attribute.Decimal;
+    sets: Schema.Attribute.Integer;
+    reps: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1061,10 +1183,6 @@ export interface ApiStructureStructure extends Struct.CollectionTypeSchema {
     Intensity_Target: Schema.Attribute.BigInteger;
     Min_Value: Schema.Attribute.BigInteger;
     Max_Value: Schema.Attribute.BigInteger;
-    workout_plans: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::workout-plan.workout-plan'
-    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1195,10 +1313,9 @@ export interface ApiWorkoutPlanWorkoutPlan extends Struct.CollectionTypeSchema {
     Completed: Schema.Attribute.Boolean;
     Description: Schema.Attribute.String;
     Distance: Schema.Attribute.Decimal;
-    DistancePlanned: Schema.Attribute.BigInteger;
+    DistancePlanned: Schema.Attribute.Decimal;
     scheduled_date: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
-    WorkoutDay: Schema.Attribute.DateTime;
     TotalTime: Schema.Attribute.Decimal;
     TotalTimePlanned: Schema.Attribute.Decimal;
     WorkoutFileFormats: Schema.Attribute.String;
@@ -1208,8 +1325,6 @@ export interface ApiWorkoutPlanWorkoutPlan extends Struct.CollectionTypeSchema {
     CadenceMaximum: Schema.Attribute.BigInteger;
     Calories: Schema.Attribute.Decimal;
     CaloriesPlanned: Schema.Attribute.Decimal;
-    Energy: Schema.Attribute.Decimal;
-    EnergyPlanned: Schema.Attribute.Decimal;
     Feeling: Schema.Attribute.Enumeration<['Strong', 'Normal', 'Weak']>;
     HeartRateAverage: Schema.Attribute.BigInteger;
     HeartRateMaximum: Schema.Attribute.BigInteger;
@@ -1220,16 +1335,64 @@ export interface ApiWorkoutPlanWorkoutPlan extends Struct.CollectionTypeSchema {
     VelocityMaximum: Schema.Attribute.Decimal;
     VelocityPlanned: Schema.Attribute.Decimal;
     PowerAverage: Schema.Attribute.Decimal;
-    PowerMaximum: Schema.Attribute.BigInteger;
+    PowerMaximum: Schema.Attribute.Decimal;
     username: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    structure: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::structure.structure'
-    >;
     exercises: Schema.Attribute.Relation<'oneToMany', 'api::exercise.exercise'>;
+    sport_type: Schema.Attribute.Enumeration<
+      [
+        'Running',
+        'Cycling',
+        'Swimming',
+        'Hiking',
+        'Strength',
+        'Cardio',
+        'Full-Body ',
+        'Lower Body',
+        'Upper Body',
+        'Core',
+        'Hybrid (Strength + Cardio)',
+        'Plyometric (Explosive)',
+        'Functional Training',
+        'Flexibility and Mobility ',
+        'Powerlifting',
+        'Bodyweight Training',
+        'High-Intensity Interval Training (HIIT) ',
+        'Pilates',
+        'Yoga',
+        'Circuit Training',
+        'Isometric Training ',
+        'Endurance Training',
+        'Agility and Speed Training',
+        'Rehabilitation and Low-Impact ',
+        'Dance Fitness ',
+        'Rowing',
+        'Badminton',
+        'Tennis',
+        'Jogging',
+      ]
+    >;
+    elevation_planned: Schema.Attribute.Decimal;
+    gps_route_planned: Schema.Attribute.JSON;
+    location_planned: Schema.Attribute.JSON;
+    strava_inputs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::strava-input.strava-input'
+    >;
+    intensity_level_planned: Schema.Attribute.Decimal;
+    cadence: Schema.Attribute.Decimal;
+    rental_bikes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::rental-bike.rental-bike'
+    >;
+    weather_conditions: Schema.Attribute.Enumeration<
+      ['Sunny', 'Rainy', 'Snowy', 'Clear', 'Cold', 'Windy']
+    >;
+    fitness_goals: Schema.Attribute.String;
+    reps: Schema.Attribute.Integer;
+    sets: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1628,6 +1791,7 @@ declare module '@strapi/strapi' {
       'api::health-vital.health-vital': ApiHealthVitalHealthVital;
       'api::meal.meal': ApiMealMeal;
       'api::plan.plan': ApiPlanPlan;
+      'api::rental-bike.rental-bike': ApiRentalBikeRentalBike;
       'api::sleeplog.sleeplog': ApiSleeplogSleeplog;
       'api::strava-input.strava-input': ApiStravaInputStravaInput;
       'api::structure.structure': ApiStructureStructure;

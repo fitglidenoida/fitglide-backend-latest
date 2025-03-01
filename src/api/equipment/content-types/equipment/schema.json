@@ -31,7 +31,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::exercise.exercise",
-      "inversedBy": "equipment"
+      "mappedBy": "equipment"
     }
   }
 }

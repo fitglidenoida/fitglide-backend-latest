@@ -25,19 +25,16 @@
       "type": "decimal"
     },
     "moving_time": {
-      "type": "biginteger"
+      "type": "decimal"
     },
     "elapsed_time": {
-      "type": "biginteger"
+      "type": "decimal"
     },
     "total_elevation_gain": {
-      "type": "biginteger"
+      "type": "decimal"
     },
     "elev_high": {
       "type": "biginteger"
-    },
-    "sport_type": {
-      "type": "string"
     },
     "start_date": {
       "type": "datetime"
@@ -60,9 +57,6 @@
     "kudos_count": {
       "type": "integer"
     },
-    "workout_type": {
-      "type": "biginteger"
-    },
     "upload_id_str": {
       "type": "string"
     },
@@ -73,7 +67,7 @@
       "type": "decimal"
     },
     "gear_id": {
-      "type": "biginteger"
+      "type": "integer"
     },
     "description": {
       "type": "string"
@@ -111,21 +105,67 @@
       "type": "boolean"
     },
     "athlete_id": {
-      "type": "biginteger"
+      "type": "integer"
     },
     "activity_id": {
-      "type": "biginteger"
+      "type": "integer"
     },
     "username": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "user": {
+    "workout_plan": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
+      "target": "api::workout-plan.workout-plan",
       "inversedBy": "strava_inputs"
+    },
+    "cadence": {
+      "type": "integer"
+    },
+    "sport_type": {
+      "type": "enumeration",
+      "enum": [
+        "Running",
+        "Cycling",
+        "Swimming",
+        "Hiking",
+        "Strength",
+        "Cardio",
+        "Full-Body ",
+        "Lower Body",
+        "Upper Body",
+        "Core",
+        "Hybrid (Strength + Cardio)",
+        "Plyometric (Explosive)",
+        "Functional Training",
+        "Flexibility and Mobility ",
+        "Powerlifting",
+        "Bodyweight Training",
+        "High-Intensity Interval Training (HIIT) ",
+        "Pilates",
+        "Yoga",
+        "Circuit Training",
+        "Isometric Training ",
+        "Endurance Training",
+        "Agility and Speed Training",
+        "Rehabilitation and Low-Impact ",
+        "Dance Fitness ",
+        "Rowing",
+        "Badminton",
+        "Tennis",
+        "Jogging"
+      ]
+    },
+    "intensity_level_planned": {
+      "type": "decimal"
+    },
+    "sets": {
+      "type": "integer"
+    },
+    "reps": {
+      "type": "integer"
     }
   }
 }

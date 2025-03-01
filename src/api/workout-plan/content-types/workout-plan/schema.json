@@ -25,16 +25,13 @@
       "type": "decimal"
     },
     "DistancePlanned": {
-      "type": "biginteger"
+      "type": "decimal"
     },
     "scheduled_date": {
       "type": "datetime"
     },
     "Title": {
       "type": "string"
-    },
-    "WorkoutDay": {
-      "type": "datetime"
     },
     "TotalTime": {
       "type": "decimal"
@@ -61,12 +58,6 @@
       "type": "decimal"
     },
     "CaloriesPlanned": {
-      "type": "decimal"
-    },
-    "Energy": {
-      "type": "decimal"
-    },
-    "EnergyPlanned": {
       "type": "decimal"
     },
     "Feeling": {
@@ -105,7 +96,7 @@
       "type": "decimal"
     },
     "PowerMaximum": {
-      "type": "biginteger"
+      "type": "decimal"
     },
     "username": {
       "type": "relation",
@@ -113,17 +104,92 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "workout_plans"
     },
-    "structure": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::structure.structure",
-      "inversedBy": "workout_plans"
-    },
     "exercises": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::exercise.exercise",
       "mappedBy": "workout_plan"
+    },
+    "sport_type": {
+      "type": "enumeration",
+      "enum": [
+        "Running",
+        "Cycling",
+        "Swimming",
+        "Hiking",
+        "Strength",
+        "Cardio",
+        "Full-Body ",
+        "Lower Body",
+        "Upper Body",
+        "Core",
+        "Hybrid (Strength + Cardio)",
+        "Plyometric (Explosive)",
+        "Functional Training",
+        "Flexibility and Mobility ",
+        "Powerlifting",
+        "Bodyweight Training",
+        "High-Intensity Interval Training (HIIT) ",
+        "Pilates",
+        "Yoga",
+        "Circuit Training",
+        "Isometric Training ",
+        "Endurance Training",
+        "Agility and Speed Training",
+        "Rehabilitation and Low-Impact ",
+        "Dance Fitness ",
+        "Rowing",
+        "Badminton",
+        "Tennis",
+        "Jogging"
+      ]
+    },
+    "elevation_planned": {
+      "type": "decimal"
+    },
+    "gps_route_planned": {
+      "type": "json"
+    },
+    "location_planned": {
+      "type": "json"
+    },
+    "strava_inputs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::strava-input.strava-input",
+      "mappedBy": "workout_plan"
+    },
+    "intensity_level_planned": {
+      "type": "decimal"
+    },
+    "cadence": {
+      "type": "decimal"
+    },
+    "rental_bikes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rental-bike.rental-bike",
+      "mappedBy": "workout_plan"
+    },
+    "weather_conditions": {
+      "type": "enumeration",
+      "enum": [
+        "Sunny",
+        "Rainy",
+        "Snowy",
+        "Clear",
+        "Cold",
+        "Windy"
+      ]
+    },
+    "fitness_goals": {
+      "type": "string"
+    },
+    "reps": {
+      "type": "integer"
+    },
+    "sets": {
+      "type": "integer"
     }
   }
 }
